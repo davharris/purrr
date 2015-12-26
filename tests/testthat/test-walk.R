@@ -12,13 +12,9 @@ test_that("returns .x", {
 
 test_that("has intended side effects", {
   x <- 1:3
-  env <- environment()
   f <- function(x){
-    assign(paste0("test", x), x, envir = env)
+    cat(paste0("test", x))
   }
 
-  walk(x, f)
-  expect_equal(test1, 1)
-  expect_equal(test2, 2)
-  expect_equal(test3, 3)
+  expect_output(walk(x, f), "test1test2test3")
 })
