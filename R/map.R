@@ -118,6 +118,11 @@ map_df <- function(.x, .f, ..., .id = NULL) {
 #' @export
 #' @rdname map
 walk <- function(.x, .f, ...) {
+
+  if (!is_vector(.x)) {
+    stop(".x is not a vector (", typeof(.x), ")")
+  }
+
   .f <- as_function(.f)
   for (i in seq_along(.x)) {
     .f(.x[[i]], ...)
