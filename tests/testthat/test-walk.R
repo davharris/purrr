@@ -1,8 +1,8 @@
 context("walk")
 
 test_that("fails on non-vectors", {
-  expect_error(map(environment(), identity), "not a vector")
-  expect_error(map(quote(a), identity), "not a vector")
+  expect_error(walk(environment(), identity), "not a vector")
+  expect_error(walk(quote(a), identity), "not a vector")
 })
 
 test_that("returns .x", {
